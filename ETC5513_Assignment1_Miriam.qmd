@@ -1,20 +1,137 @@
 ---
-title: "ETC5513_Assignment1_Miriam"
+title: "ETC5513_Assignment1"
+author: Miriam Wu
 format:
     html: default
     pdf: default
 ---
 
+```{r setup, include = FALSE}
 
-```{r setup}
-#| echo: false
-#| warning: false
-#| messages: false
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE
+)
 
-library(reader)
+library(readr)
 library(tidyverse)
 library(ggplot2)
 library(dplyr)
 
+```
+
+```{r}
+data <- read_csv("data/36619167_Miriam Wu.csv")
+view(data)
+```
+
+# Introduction
+
+Marketing plays a crucial role in driving customer engagement and sales growth. However, the effectiveness of marketing spend remains uncertain. Therefore, using the dataset selected, the research aims to look into the relationship between marketing investment and customer purchase behaviour in order to gather insights for future budget allocation and campaign strategy.
+
+# Research Question
+
+This report investigates whether higher marketing spend per customer is associated with higher purchase amounts. It also examines whether this relationship differs across customer segments(Enterprise, SMB, and Consumer), in oder to compare how the strength of the relationship varies between segments.
+
+# Dataset Introduction
+
+Step 1: Modify the date format
+
+```{r}
+data$signup_date <- as.Date(data$signup_date)
+```
+
+Step 2: Reduce observations with missing purchase amount values
+
+```{r}
+data2 <- data |> 
+    filter(!is.na(purchase_amount))
+view(data2)
+```
+
+This dataset contains 132 observations of individual customers. It records information including customer ID, signup date, marketing spend, number of visits, purchase amount and customer segment. The data captures both customer engagement and purchasing behavior, which could be used to analyze the relationship between marketing investment and customer purchase behavior in this research.
+
+## Dataset Description
+
+This dataset contains `r nrow(data2)` observations and `r ncol(data2)` variables. It includes customer_id, signup_date, marketing_spend, visits, purchase_amount, segment and notes. Among these, signup_date is a date variable, customer_id, segment, and notes are character variables, and marketing_spend, visits, and purchase_amount are numeric variables.
+
+```{r}
+#| echo: false
+#| results: hide
+str(data2)
+names(data2)
+```
+
+
+- Data Summary
+The following table provides an overview of the minimum and maximum purchase and marketing spending across different segments, while the plot shows the average spending across segments.
+
+```{r}
+library(knitr)
+
+seg_num <- data2 |> 
+  group_by(segment) |> 
+  summarise(n = n(),
+  min_purchase = min(purchase_amount, na.rm = TRUE),
+  max_purchase = max(purchase_amount, na.tm = TRUE),
+  min_mkting = min(marketing_spend, na.rm = TRUE),
+  max_mkting = max(marketing_spend, na.rm = TRUE))
+
+seg_num |> 
+  kable(caption = "Segment Summary")
 
 ```
+
+
+```{r}
+library(tidyr)
+
+seg_data <- data2 |> 
+  group_by(segment) |> 
+  summarise(
+    avg_marketing_spend = mean(marketing_spend, na.rm = TRUE),
+    avg_purchase_amount = mean(purchase_amount, na.rm = TRUE)
+  )
+
+seg_long <- seg_data |> 
+  pivot_longer(
+    cols = c(avg_marketing_spend, avg_purchase_amount),
+    names_to = "metric",
+    values_to = "value"
+  )
+
+seg_long |> 
+  ggplot(aes(x = segment, y = value, fill = metric)) +
+  geom_col(position = "dodge", width = .7) +
+  labs(title = "Average Spending by Segment") +
+  theme_minimal()
+```
+
+
+# Results 
+
+
+
+```{r}
+
+#| fig-cap: "Marketing Spend vs. Purchase Amount"
+data2 |> 
+  ggplot(aes(x = marketing_spend, y = purchase_amount,
+             color = segment)) +
+  geom_point() +
+  theme_minimal()
+
+#| fig-cap: "Relationship between Marketing Spend and Purchase Amount Across Different Segments"
+ggplot(data2, aes(x = marketing_spend, y = purchase_amount, color = segment)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~ segment, ncol = 2) +
+  theme_minimal()
+
+
+```
+
+
+
+
