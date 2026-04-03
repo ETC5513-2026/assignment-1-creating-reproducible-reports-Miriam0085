@@ -76,23 +76,24 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Marketing plays a crucial role in driving customer engagement and sales growth. However, the effectiveness of marketing spend remains uncertain. Therefore, using the dataset selected, the research aims to look into the relationship between marketing investment and customer purchase behaviour in order to gather insights for future budget allocation and campaign strategy.</p>
+<p>Marketing plays a crucial role in driving customer engagement and sales growth. However, the effectiveness of marketing spend remains uncertain. Therefore, using the data set selected, this research aims to look into the relationship between marketing investment and customer purchase behavior in order to gather insights for future budget allocation and campaign strategy.</p>
 </section>
 <section id="research-question" class="level1">
 <h1>Research Question</h1>
-<p>This report investigates whether higher marketing spend per customer is associated with higher purchase amounts. It also examines whether this relationship differs across customer segments(Enterprise, SMB, and Consumer), in oder to compare how the strength of the relationship varies between segments.</p>
+<p>This report investigates whether higher marketing spend per customer is associated with higher purchase amounts. It also examines whether this relationship differs across customer segments(Enterprise, SMB, and Consumer), in order to compare how the strength of the relationship varies between segments.</p>
 </section>
 <section id="dataset-introduction" class="level1">
 <h1>Dataset Introduction</h1>
 <p>Step 1: Modify the date format</p>
 <p>Step 2: Reduce observations with missing purchase amount values</p>
-<p>This dataset contains 132 observations of individual customers. It records information including customer ID, signup date, marketing spend, number of visits, purchase amount and customer segment. The data captures both customer engagement and purchasing behavior, which could be used to analyze the relationship between marketing investment and customer purchase behavior in this research.</p>
+<p>This data set contains 132 observations of individual customers. The data contains customers’ purchase amounts, number of visits, and segment classifications, as well as the marketing spend allocated to individual customers. It captures both customer engagement and purchasing behavior, which could be used to analyze the relationship between marketing investment and customer purchase behavior in this research.</p>
 <section id="dataset-description" class="level2">
 <h2 class="anchored" data-anchor-id="dataset-description">Dataset Description</h2>
 <p>This dataset contains 132 observations and 7 variables. It includes customer_id, signup_date, marketing_spend, visits, purchase_amount, segment and notes. Among these, signup_date is a date variable, customer_id, segment, and notes are character variables, and marketing_spend, visits, and purchase_amount are numeric variables.</p>
 <ul>
-<li>Data Summary The following table provides an overview of the minimum and maximum purchase and marketing spending across different segments, while the plot shows the average spending across segments.</li>
+<li>Data Summary</li>
 </ul>
+<p>The following table provides an overview of the minimum and maximum purchase and marketing spending across different segments, while the plot shows the average spending across segments.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -149,18 +150,33 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
+<p>From <a href="#fig-general-scatter" class="quarto-xref">Figure&nbsp;1</a>, the scatter plot shows an upward trend, suggesting a positive relationship between marketing spend and purchase amount. Further evidence is provided by the linear regression model, where the p-value for marketing spend is less than 0.001, indicating that the relationship is statistically significant. Therefore, it is likely that higher marketing spend is associated with higher purchase amounts.</p>
+<p><a href="#fig-segment-scatter" class="quarto-xref">Figure&nbsp;2</a> illustrates the distribution and fitted regression line across different segments. A consistent upward trend s observed in all groups, confirming a statistically significant positive correlation between marketing spend and purchase amount. While the direction of the relationship remains uniform, the magnitude of the slopes vary by segments: Consumer(0.475), Enterprise(0.743), and SMB(0.740). Specifically, the Enterprise segment exhibits the steepest gradient, suggesting that incremental marketing investments yield the highest marginal returns in purchase volume within the group.</p>
+<p>These regression results also align with the findings from the data summary. Although the Consumer segment has the highest average marketing spend, it yields lowest purchase amount among all groups. This discrepancy can be explained by its lowest regression slope(0.475), which indicates that each unit of marketing investment in this segment generates the smallest incremental increase in revenue.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ETC5513_Assignment1_Miriam_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<div id="fig-general-scatter" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-general-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="ETC5513_Assignment1_Miriam_files/figure-html/fig-general-scatter-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-general-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Marketing Spend vs.&nbsp;Purchase Amount
+</figcaption>
 </figure>
 </div>
 </div>
+</div>
+<div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ETC5513_Assignment1_Miriam_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+<div id="fig-segment-scatter" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-segment-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="ETC5513_Assignment1_Miriam_files/figure-html/fig-segment-scatter-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-segment-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Marketing Spend vs.&nbsp;Purchase Amount Across Segments
+</figcaption>
 </figure>
 </div>
 </div>

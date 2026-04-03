@@ -63,8 +63,8 @@ str(data2)
 names(data2)
 ```
 
+-   Data Summary 
 
-- Data Summary
 The following table provides an overview of the minimum and maximum purchase and marketing spending across different segments, while the plot shows the average spending across segments.
 
 ```{r}
@@ -82,7 +82,6 @@ seg_num |>
   kable(caption = "Segment Summary")
 
 ```
-
 
 ```{r}
 library(tidyr)
@@ -108,30 +107,44 @@ seg_long |>
   theme_minimal()
 ```
 
+# Results
 
-# Results 
+From @fig-general-scatter, the scatter plot shows an upward trend, suggesting a positive relationship between marketing spend and purchase amount.
+Further evidence is provided by the linear regression model, where the p-value for marketing spend is less than 0.001, indicating that the relationship is statistically significant.
+Therefore, it is likely that higher marketing spend is associated with higher purchase amounts.
 
+@fig-segment-scatter illustrates the distribution and fitted regression line across different segments. A consistent upward trend s observed in all groups, confirming a statistically significant positive correlation between marketing spend and purchase amount. While the direction of the relationship remains uniform, the magnitude of the slopes vary by segments: Consumer(0.475), Enterprise(0.473), and SMB(0.740). Specifically, the Enterprise segment exhibits the steepest gradient, suggesting that incremental marketing investments yield the highest marginal returns in purchase volume within the group.
 
+```{r, inclue = FALSE}
+#| echo: false
+#| results: hide
+model <- lm(purchase_amount ~ marketing_spend, data = data2)
+summary(model)
+
+seg_model <- lm(purchase_amount ~ marketing_spend * segment, data = data2)
+summary(seg_model)
+```
 
 ```{r}
-
+#| label: fig-general-scatter
 #| fig-cap: "Marketing Spend vs. Purchase Amount"
+
 data2 |> 
-  ggplot(aes(x = marketing_spend, y = purchase_amount,
-             color = segment)) +
+  ggplot(aes(x = marketing_spend, y = purchase_amount)) +
+  geom_smooth(method = lm, se = FALSE) +
   geom_point() +
   theme_minimal()
 
-#| fig-cap: "Relationship between Marketing Spend and Purchase Amount Across Different Segments"
+```
+
+```{r}
+#| label: fig-segment-scatter
+#| fig-cap: "Marketing Spend vs. Purchase Amount Across Segments"
 ggplot(data2, aes(x = marketing_spend, y = purchase_amount, color = segment)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   facet_wrap(~ segment, ncol = 2) +
   theme_minimal()
 
-
 ```
-
-
-
 
