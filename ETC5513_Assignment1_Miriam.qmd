@@ -28,11 +28,11 @@ view(data)
 
 # Introduction
 
-Marketing plays a crucial role in driving customer engagement and sales growth. However, the effectiveness of marketing spend remains uncertain. Therefore, using the dataset selected, the research aims to look into the relationship between marketing investment and customer purchase behaviour in order to gather insights for future budget allocation and campaign strategy.
+Marketing plays a crucial role in driving customer engagement and sales growth. However, the effectiveness of marketing spend remains uncertain. Therefore, using the data set selected, this research aims to look into the relationship between marketing investment and customer purchase behavior in order to gather insights for future budget allocation and campaign strategy.
 
 # Research Question
 
-This report investigates whether higher marketing spend per customer is associated with higher purchase amounts. It also examines whether this relationship differs across customer segments(Enterprise, SMB, and Consumer), in oder to compare how the strength of the relationship varies between segments.
+This report investigates whether higher marketing spend per customer is associated with higher purchase amounts. It also examines whether this relationship differs across customer segments(Enterprise, SMB, and Consumer), in order to compare how the strength of the relationship varies between segments.
 
 # Dataset Introduction
 
@@ -50,7 +50,7 @@ data2 <- data |>
 view(data2)
 ```
 
-This dataset contains 132 observations of individual customers. It records information including customer ID, signup date, marketing spend, number of visits, purchase amount and customer segment. The data captures both customer engagement and purchasing behavior, which could be used to analyze the relationship between marketing investment and customer purchase behavior in this research.
+This data set contains 132 observations of individual customers. The data contains customers’ purchase amounts, number of visits, and segment classifications, as well as the marketing spend allocated to individual customers. It captures both customer engagement and purchasing behavior, which could be used to analyze the relationship between marketing investment and customer purchase behavior in this research.
 
 ## Dataset Description
 
@@ -113,7 +113,10 @@ From @fig-general-scatter, the scatter plot shows an upward trend, suggesting a 
 Further evidence is provided by the linear regression model, where the p-value for marketing spend is less than 0.001, indicating that the relationship is statistically significant.
 Therefore, it is likely that higher marketing spend is associated with higher purchase amounts.
 
-@fig-segment-scatter illustrates the distribution and fitted regression line across different segments. A consistent upward trend s observed in all groups, confirming a statistically significant positive correlation between marketing spend and purchase amount. While the direction of the relationship remains uniform, the magnitude of the slopes vary by segments: Consumer(0.475), Enterprise(0.473), and SMB(0.740). Specifically, the Enterprise segment exhibits the steepest gradient, suggesting that incremental marketing investments yield the highest marginal returns in purchase volume within the group.
+@fig-segment-scatter illustrates the distribution and fitted regression line across different segments. A consistent upward trend s observed in all groups, confirming a statistically significant positive correlation between marketing spend and purchase amount. While the direction of the relationship remains uniform, the magnitude of the slopes vary by segments: Consumer(0.475), Enterprise(0.743), and SMB(0.740). Specifically, the Enterprise segment exhibits the steepest gradient, suggesting that incremental marketing investments yield the highest marginal returns in purchase volume within the group.
+
+These regression results also align with the findings from the data summary. Although the Consumer segment has the highest average marketing spend, it yields lowest purchase amount among all groups. This discrepancy can be explained by its lowest regression slope(0.475), which indicates that each unit of marketing investment in this segment generates the smallest incremental increase in revenue.
+
 
 ```{r, inclue = FALSE}
 #| echo: false
