@@ -1,0 +1,109 @@
+---
+title: "appendix.qmd"
+format: qmd
+editor: visual
+---
+
+## AI Ackowledgement
+
+1.  I acknowlege the use of [ChatGPT](https://chatgpt.com/c/69cf2aa2-32c0-8324-8725-8305c3d6baf7)to assist with clarifying statistical concepts, improving code implementation in R, and refining the clarity and academic tone of written explanations. I entered the prompts as following:
+
+-   Explanation of linear regression output, including the interpretation of coefficients, slope, intercept, p-values, and R-squared
+
+-   Clarification of the meaning of slope and how to interpret it in the context of marketing spend and purchase amount
+
+-   Guidance on how to determine whether two variables are correlated
+
+-   Instructions on how to extract values (e.g., p-value, coefficients) using inline R code in Quarto
+
+-   Debugging R code errors, particularly related to `lm()` models and grouped analysis
+
+-   Assistance with extracting regression slopes for different customer segments
+
+-   Clarification on whether slopes can be interpreted directly from plots
+
+-   Help with translating Chinese sentences into clear and academic English
+
+-   Refinement of written explanations for regression results and data descriptions
+
+2.  I acknowledge the use of [ChatGPT](https://chatgpt.com/c/69cdcea1-3b54-8322-b12c-aa18a2c2d4b0) to assist with understanding technical concepts, debugging code, and improving written explanations. I entered the prompts as following:
+
+-   What does "se" mean in ggplot / geom_smooth?
+
+-    Why does my figure reference show a question mark (?) when using \@fig-segment-scatter?
+
+-   I used \@fig-segment-scatter in my text, but the cross-reference is not working. Why?
+
+-   What does the instruction mean: "you must also include a paragraph describing these results and how they link back to your research question"?
+
+-   What is the difference between label and caption in Quarto?
+
+-   Why does Quarto show a question mark when referencing figures created in the same code chunk with multiple labels?
+
+-   How should I structure figures and labels correctly in Quarto for cross-referencing?
+
+3.  I acknowledge the use of [ChatGPT](https://chatgpt.com/c/69cdaa95-e084-8324-bd92-854e5b629ea3) to assist with elped clarify statistical concepts (e.g., median vs mean, p-values, and linear regression interpretation), troubleshoot R and Quarto errors. I entered the prompts as following:
+
+-   How should I structure figures and labels correctly in Quarto for cross-referencing?
+
+<!-- -->
+
+-   What is the difference between median and average?”
+
+<!-- -->
+
+-   “When should I use median marketing spend and when should I use average marketing spend?”
+
+-   “What is the English term for sample size?”
+
+-   “Does a p-value of 1.44e-13 mean the correlation is very weak?”
+
+-   “Explain the difference between median and average.”
+
+<!-- -->
+
+-   How should I structure figures and labels correctly in Quarto for cross-referencing?
+
+<!-- -->
+
+-   What is the difference between median and average?”
+
+<!-- -->
+
+-   “When should I use median marketing spend and when should I use average marketing spend?”
+
+-   “What is the English term for sample size?”
+
+-   “Does a p-value of 1.44e-13 mean the correlation is very weak?”
+
+-   “Explain the difference between median and average.”
+
+<!-- -->
+
+-   “Can I use a linear regression model by segment to analyze whether higher marketing spend per customer is associated with higher purchase amounts?”
+
+-   “What does this mean: lm(purchase_amount \~ marketing_spend, data = subset(data2, segment == 'A'))?”
+
+-   “How should I interpret the regression results?”
+
+-   “Explain the regression output (summary results).”
+
+<!-- -->
+
+-   “Explain this ggplot code: ggplot(data2, aes(x = marketing_spend, y = purchase_amount)) + geom_point() + geom_smooth(method = 'lm', se = FALSE).”
+
+-   “How do I adjust the width in geom_col?”
+
+-   “How do I round numbers to 2 decimal places?”
+
+-   “Why doesn’t summarise() work with round() in this way?”
+
+-   “What does ‘counts of certain variables in groups’ mean?”
+
+4.  I acknowledge the use of [Gemini](https://gemini.google.com/app/a3fcb1a069c3bf4e) to assist with technical implementation of R, statistical questions clarification and academic writing. Please find the prompts as following:
+
+-   How do I use inline code to extract these three slopes separately from the lm summary output?
+
+-   How can I see the slope of a data set after it is divided into different segments for an lm model?
+
+-   The Enterprise segment exhibits the steepest gradient... How can I say this more academically in English?
